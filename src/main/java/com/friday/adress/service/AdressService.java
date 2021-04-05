@@ -55,9 +55,7 @@ public class AdressService implements IAdressService{
 		List<String> ptrnList = new ArrayList<String>();
 		
 		try (Stream<String> stream = Files.lines(Paths.get(Constants.REGEX_PATTERNS_PATH))) {
-            stream.forEach(line -> {
-            	ptrnList.add(line);
-            });
+            stream.forEach(ptrnList::add);
         } catch (IOException e) {
         	throw new MissingFileException(Constants.MISSING_FILE_EXCEPTION + Constants.REGEX_PATTERNS_PATH);
         }
